@@ -1,7 +1,7 @@
 # CABG-PRECISE Risk Score
 
 ### Overview
-**CABG-PRECISE** is a preoperative clinical predictive model designed to estimate in-hospital mortality risk following coronary artery bypass graft (CABG) surgery. The model was developed and validated at **Hospital General Universitario Gregorio Marañón** (Madrid, Spain) using a cohort of 2,101 consecutive patients.
+**CABG-PRECISE** is a preoperative clinical predictive model designed to estimate in-hospital mortality risk following coronary artery bypass graft (CABG) surgery. The model was developed and validated at Hospital General Universitario Gregorio Marañón (Madrid, Spain) using a cohort of 2,101 consecutive patients.
 
 ### Clinical Calculator
 The interactive web-based tool is available here:
