@@ -12,7 +12,7 @@ The model demonstrates high precision and significant improvement over tradition
 
 * **Discrimination:** The final model achieved a corrected AUC of 0.810, significantly outperforming EuroSCORE II in our cohort (p=0.003).
 * **Calibration:** Excellent agreement between predicted and observed mortality, with a Hosmer-Lemeshow p-value of 0.317 and an Expected/Observed (E/O) Ratio of 1.00.
-* **Clinical utility:** Significant reclassification improvement over EuroSCORE II with a Net Reclassification Improvement of 52.1% and an Integrated Discrimination Improvement of 6.8%**. Decision Curve Analysis confirmed a higher net benefit across the majority of risk thresholds.
+* **Clinical utility:** Significant reclassification improvement over EuroSCORE II with a Net Reclassification Improvement of 52.1% and an Integrated Discrimination Improvement of 6.8%. Decision Curve Analysis confirmed a higher net benefit across the majority of risk thresholds.
 * **Methodology:** Utilization of *Restricted Cubic Splines* for age to capture non-linear risk and internal validation via bootstrapping (1,000 iterations).
 
 ### Authors
