@@ -14,7 +14,7 @@
         .header h1 { margin: 0; font-size: 30px; font-weight: 700; letter-spacing: 1px; }
         .header .subtitle { margin: 12px 0 0; opacity: 0.9; font-size: 15px; font-weight: 400; font-style: italic; line-height: 1.4; }
 
-        .section { padding: 25px 30px; border-bottom: 1px solid #edf2f7; }
+        .section { padding: 25px 30px; border-bottom: 1px solid #edf2f7; position: relative; } /* El anclaje para móviles será este */
         .section-title { font-size: 13px; font-weight: 800; color: #a0aec0; text-transform: uppercase; margin-bottom: 22px; letter-spacing: 0.8px; display: flex; align-items: center; }
         .section-title::after { content: ""; flex: 1; height: 1px; background: #edf2f7; margin-left: 15px; }
 
@@ -30,6 +30,7 @@
             opacity: 1; 
         }
         
+        /* Alineación para escritorio */
         .grid .field:nth-child(even) .info-icon .tooltiptext { left: auto; right: 0; transform: none; }
         .grid .field:nth-child(odd) .info-icon .tooltiptext { left: 0; transform: none; }
 
@@ -61,19 +62,23 @@
         
         .disclaimer-box { margin-top: 30px; padding: 15px; background: #fdf2f2; border: 1px solid #fecaca; border-radius: 8px; font-size: 11px; color: #9b2c2c; text-align: justify; line-height: 1.5; }
 
-        /* AJUSTE PARA MÓVILES */
+        /* SOLUCIÓN DEFINITIVA MÓVILES */
         @media (max-width: 600px) { 
             .grid, .mnemonic-container { grid-template-columns: 1fr; } 
             .limited-width { max-width: 100%; } 
             .amdg { position: static; text-align: right; margin-top: 10px; } 
             
-            /* Los carteles crecen hacia la izquierda para quedarse siempre dentro de la pantalla */
+            /* Hacemos que el campo ignore su posición relativa para que el tooltip se centre en la SECCIÓN */
+            .field { position: static; }
+            
             .tooltiptext {
-                left: auto !important;
-                right: 0 !important; /* Alineado al borde derecho del campo */
-                transform: none !important;
-                width: 280px !important; /* Anchura cómoda para leer */
+                width: 280px !important;
                 max-width: 85vw !important;
+                left: 50% !important; /* Centrado respecto a .section */
+                transform: translateX(-50%) !important;
+                right: auto !important;
+                bottom: auto !important;
+                margin-top: -10px; /* Ajuste para que no tape el icono */
             }
         }
     </style>
@@ -105,7 +110,7 @@
             <select id="ph" onchange="calc()"><option value="0">Normal (&le; 30 mmHg)</option><option value="0.538">Moderate (31-55 mmHg)</option><option value="1.212">Severe (&gt; 55 mmHg)</option></select></div>
             <div class="field"><label>Atrial fibrillation / flutter <span class="info-icon" tabindex="0" onclick="">i<span class="tooltiptext">Preoperative history of atrial fibrillation or flutter.</span></span></label>
             <div class="toggle-group"><input type="radio" name="af" id="af0" value="0" checked onchange="calc()"><label for="af0">No</label><input type="radio" name="af" id="af1" value="0.732" onchange="calc()"><label for="af1">Yes</label></div></div>
-            <div class="field"><label>Recent myocardial infarction (&lt; 90 days) <span class="info-icon" tabindex="0" onclick="">i<span class="tooltiptext">Myocardial infarction within 90 days prior to the procedure.</span></span></label>
+            <div class="field"><label>Recent myocardial infarction (< 90 days) <span class="info-icon" tabindex="0" onclick="">i<span class="tooltiptext">Myocardial infarction within 90 days prior to the procedure.</span></span></label>
             <div class="toggle-group"><input type="radio" name="mi" id="mi0" value="0" checked onchange="calc()"><label for="mi0">No</label><input type="radio" name="mi" id="mi1" value="0.642" onchange="calc()"><label for="mi1">Yes</label></div></div>
             <div class="field"><label>IABP or other circulatory support <span class="info-icon" tabindex="0" onclick="">i<span class="tooltiptext">Intra-aortic balloon pump or other preoperative circulatory support.</span></span></label>
             <div class="toggle-group"><input type="radio" name="iabp" id="iabp0" value="0" checked onchange="calc()"><label for="iabp0">No</label><input type="radio" name="iabp" id="iabp1" value="0.476" onchange="calc()"><label for="iabp1">Yes</label></div></div>
@@ -235,5 +240,4 @@
 </script>
 
 </body>
-</html> 
-
+</html>
