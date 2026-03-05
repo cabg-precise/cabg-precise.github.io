@@ -14,7 +14,7 @@
         .header h1 { margin: 0; font-size: 30px; font-weight: 700; letter-spacing: 1px; }
         .header .subtitle { margin: 12px 0 0; opacity: 0.9; font-size: 15px; font-weight: 400; font-style: italic; line-height: 1.4; }
 
-        .section { padding: 25px 30px; border-bottom: 1px solid #edf2f7; position: relative; }
+        .section { padding: 25px 30px; border-bottom: 1px solid #edf2f7; }
         .section-title { font-size: 13px; font-weight: 800; color: #a0aec0; text-transform: uppercase; margin-bottom: 22px; letter-spacing: 0.8px; display: flex; align-items: center; }
         .section-title::after { content: ""; flex: 1; height: 1px; background: #edf2f7; margin-left: 15px; }
 
@@ -61,20 +61,19 @@
         
         .disclaimer-box { margin-top: 30px; padding: 15px; background: #fdf2f2; border: 1px solid #fecaca; border-radius: 8px; font-size: 11px; color: #9b2c2c; text-align: justify; line-height: 1.5; }
 
+        /* AJUSTE PARA MÓVILES */
         @media (max-width: 600px) { 
             .grid, .mnemonic-container { grid-template-columns: 1fr; } 
             .limited-width { max-width: 100%; } 
             .amdg { position: static; text-align: right; margin-top: 10px; } 
             
-            /* CENTRADO PROFESIONAL EN MÓVIL */
-            .field { position: static; }
+            /* Los carteles crecen hacia la izquierda para quedarse siempre dentro de la pantalla */
             .tooltiptext {
-                width: 260px !important; /* Anchura fija para evitar que las palabras se corten */
-                max-width: 85vw !important; /* Seguridad para pantallas extremadamente pequeñas */
-                left: 50% !important;
-                transform: translateX(-50%) !important;
-                right: auto !important;
-                bottom: 120% !important;
+                left: auto !important;
+                right: 0 !important; /* Alineado al borde derecho del campo */
+                transform: none !important;
+                width: 280px !important; /* Anchura cómoda para leer */
+                max-width: 85vw !important;
             }
         }
     </style>
@@ -236,5 +235,4 @@
 </script>
 
 </body>
-
-</html> 
+</html>
