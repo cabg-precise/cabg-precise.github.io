@@ -16,11 +16,11 @@ The model demonstrates high precision and significant improvement over tradition
 * **Methodology:** Utilization of *Restricted Cubic Splines* for age to capture non-linear risk and internal validation via bootstrapping (1,000 iterations).
 
 ### Authors
-* **Corresponding Author & Lead Developer:** Ignacio Vasserot, MD.
-* **Senior Investigators:** Manuel Martínez-Sellés, MD, PhD; Javier Hortal, MD, PhD; José María Barrio, MD, PhD; Ignacio Garutti, MD, PhD.
+* **Corresponding author & developer:** Ignacio Vasserot, MD.
+* **Senior investigators:** Manuel Martínez-Sellés, MD, PhD; José María Barrio, MD, PhD; Gregorio Cuerpo, MD, PhD; Javier Bermejo, MD, PhD; Ignacio Garutti, MD, PhD; Javier Hortal, MD, PhD.
 
 ### Affiliation
-* Department of Anesthesiology / Department of Cardiology.
+* Department of Anesthesiology / Department of Cardiology / Department of Cardiac Surgery.
 * Hospital General Universitario Gregorio Marañón, Madrid, Spain.
 
 ### Reference
