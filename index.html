@@ -99,9 +99,9 @@
             <select id="ef" onchange="calc()"><option value="0">Preserved (&ge; 50%)</option><option value="0.331">Moderate (30-49%)</option><option value="0.514">Severe (&lt; 30%)</option></select></div>
             <div class="field"><label>Pulmonary HT (PASP) <span class="info-icon" tabindex="0" onclick="">i<span class="tooltiptext">Mod: 31-55 mmHg, Severe: &gt; 55 mmHg.</span></span></label>
             <select id="ph" onchange="calc()"><option value="0">Normal (&le; 30 mmHg)</option><option value="0.538">Moderate (31-55 mmHg)</option><option value="1.212">Severe (&gt; 55 mmHg)</option></select></div>
-            <div class="field"><label>AF / Flutter <span class="info-icon" tabindex="0" onclick="">i<span class="tooltiptext">Preoperative history of atrial fibrillation or flutter.</span></span></label>
+            <div class="field"><label>Atrial fibrillation / flutter <span class="info-icon" tabindex="0" onclick="">i<span class="tooltiptext">Preoperative history of atrial fibrillation or flutter.</span></span></label>
             <div class="toggle-group"><input type="radio" name="af" id="af0" value="0" checked onchange="calc()"><label for="af0">No</label><input type="radio" name="af" id="af1" value="0.732" onchange="calc()"><label for="af1">Yes</label></div></div>
-            <div class="field"><label>Recent MI <span class="info-icon" tabindex="0" onclick="">i<span class="tooltiptext">Myocardial infarction within 90 days prior to the procedure.</span></span></label>
+            <div class="field"><label>Recent myocardial infarction (< 90 days) <span class="info-icon" tabindex="0" onclick="">i<span class="tooltiptext">Myocardial infarction within 90 days prior to the procedure.</span></span></label>
             <div class="toggle-group"><input type="radio" name="mi" id="mi0" value="0" checked onchange="calc()"><label for="mi0">No</label><input type="radio" name="mi" id="mi1" value="0.642" onchange="calc()"><label for="mi1">Yes</label></div></div>
             <div class="field"><label>IABP or other circulatory support <span class="info-icon" tabindex="0" onclick="">i<span class="tooltiptext">Intra-aortic balloon pump or other preoperative circulatory support.</span></span></label>
             <div class="toggle-group"><input type="radio" name="iabp" id="iabp0" value="0" checked onchange="calc()"><label for="iabp0">No</label><input type="radio" name="iabp" id="iabp1" value="0.476" onchange="calc()"><label for="iabp1">Yes</label></div></div>
@@ -233,3 +233,4 @@
 </body>
 
 </html>
+
