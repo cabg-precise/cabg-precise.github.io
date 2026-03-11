@@ -24,12 +24,36 @@
         
         .info-icon { display: inline-block; width: 18px; height: 18px; background: #cbd5e0; color: white; border-radius: 50%; text-align: center; font-size: 12px; line-height: 18px; cursor: help; margin-left: 5px; vertical-align: middle; position: relative; outline: none; }
         
-        /* Tooltip Base */
-        .tooltiptext { visibility: hidden; width: 220px; background-color: #2d3748 !important; color: #ffffff !important; text-align: center; border-radius: 6px; padding: 12px; position: absolute; z-index: 999; bottom: 135%; left: 50%; transform: translateX(-50%); opacity: 0; transition: opacity 0.3s; font-size: 12px; font-weight: normal; line-height: 1.4; pointer-events: none; text-transform: none; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        /* Estilo base del panel informativo */
+        .tooltiptext { 
+            visibility: hidden; 
+            width: 220px; 
+            background-color: #2d3748 !important; 
+            color: #ffffff !important; 
+            text-align: center; 
+            border-radius: 6px; 
+            padding: 12px; 
+            position: absolute; 
+            z-index: 999; 
+            bottom: 135%; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            opacity: 0; 
+            transition: opacity 0.3s; 
+            font-size: 12px; 
+            font-weight: normal; 
+            line-height: 1.4; 
+            pointer-events: none; 
+            text-transform: none; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3); 
+        }
         
-        .info-icon:hover .tooltiptext, .info-icon:focus .tooltiptext, .info-icon:active .tooltiptext { visibility: visible; opacity: 1; }
+        .info-icon:hover .tooltiptext, .info-icon:focus .tooltiptext, .info-icon:active .tooltiptext { 
+            visibility: visible; 
+            opacity: 1; 
+        }
         
-        /* Escritorio: Alternancia de lados */
+        /* Ajuste para escritorio: evita que se salgan en la cuadrícula de dos columnas */
         .grid .field:nth-child(even) .info-icon .tooltiptext { left: auto; right: 0; transform: none; }
         .grid .field:nth-child(odd) .info-icon .tooltiptext { left: 0; transform: none; }
 
@@ -61,22 +85,23 @@
         
         .disclaimer-box { margin-top: 30px; padding: 15px; background: #fdf2f2; border: 1px solid #fecaca; border-radius: 8px; font-size: 11px; color: #9b2c2c; text-align: justify; line-height: 1.5; }
 
-        /* AJUSTE MAESTRO PARA IPHONE / MÓVIL */
+        /* AJUSTE PARA MÓVILES: ANCLAJE AL CENTRO DEL MARCO BLANCO */
         @media (max-width: 600px) { 
             .grid, .mnemonic-container { grid-template-columns: 1fr; } 
             .limited-width { max-width: 100%; } 
             .amdg { position: static; text-align: right; margin-top: 10px; } 
             
-            /* El recuadro informativo se ancla a la derecha y crece hacia la izquierda (dentro del marco) */
+            /* Hacemos que el campo de entrada ignore su posición relativa para que el panel se centre respecto a la SECCIÓN completa */
+            .field { position: static; }
+            
             .tooltiptext {
-                width: 250px !important; /* Ancho fijo para mantener estructura */
-                left: auto !important;
-                right: 0 !important; /* Alineado al borde derecho del campo de texto/label */
-                transform: none !important;
-                bottom: 125% !important;
-                background-color: #2d3748 !important; /* Gris oscuro forzado */
-                color: #ffffff !important; /* Letras blancas forzadas */
-                opacity: 1;
+                width: 280px !important; /* Ancho fijo para mantener estructura */
+                max-width: 85vw !important; /* Seguridad para pantallas muy pequeñas */
+                left: 50% !important; /* Centrado respecto al marco blanco (.section) */
+                transform: translateX(-50%) !important;
+                right: auto !important;
+                bottom: auto !important;
+                margin-top: -10px; /* Evita que tape el icono al aparecer */
             }
         }
     </style>
