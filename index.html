@@ -14,7 +14,8 @@
         .header h1 { margin: 0; font-size: 30px; font-weight: 700; letter-spacing: 1px; }
         .header .subtitle { margin: 12px 0 0; opacity: 0.9; font-size: 15px; font-weight: 400; font-style: italic; line-height: 1.4; }
 
-        .section { padding: 25px 30px; border-bottom: 1px solid #edf2f7; position: relative; } /* El anclaje para móviles será este */
+        /* Contenedor de sección: será la referencia de centrado en móvil */
+        .section { padding: 25px 30px; border-bottom: 1px solid #edf2f7; position: relative; } 
         .section-title { font-size: 13px; font-weight: 800; color: #a0aec0; text-transform: uppercase; margin-bottom: 22px; letter-spacing: 0.8px; display: flex; align-items: center; }
         .section-title::after { content: ""; flex: 1; height: 1px; background: #edf2f7; margin-left: 15px; }
 
@@ -25,12 +26,9 @@
         .info-icon { display: inline-block; width: 18px; height: 18px; background: #cbd5e0; color: white; border-radius: 50%; text-align: center; font-size: 12px; line-height: 18px; cursor: help; margin-left: 5px; vertical-align: middle; position: relative; outline: none; }
         .tooltiptext { visibility: hidden; width: 220px; background-color: #2d3748; color: #fff; text-align: center; border-radius: 6px; padding: 12px; position: absolute; z-index: 999; bottom: 135%; left: 50%; transform: translateX(-50%); opacity: 0; transition: opacity 0.3s; font-size: 12px; font-weight: normal; line-height: 1.4; pointer-events: none; text-transform: none; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
         
-        .info-icon:hover .tooltiptext, .info-icon:focus .tooltiptext, .info-icon:active .tooltiptext { 
-            visibility: visible; 
-            opacity: 1; 
-        }
+        .info-icon:hover .tooltiptext, .info-icon:focus .tooltiptext, .info-icon:active .tooltiptext { visibility: visible; opacity: 1; }
         
-        /* Alineación para escritorio */
+        /* Alineación inteligente para escritorio */
         .grid .field:nth-child(even) .info-icon .tooltiptext { left: auto; right: 0; transform: none; }
         .grid .field:nth-child(odd) .info-icon .tooltiptext { left: 0; transform: none; }
 
@@ -62,23 +60,23 @@
         
         .disclaimer-box { margin-top: 30px; padding: 15px; background: #fdf2f2; border: 1px solid #fecaca; border-radius: 8px; font-size: 11px; color: #9b2c2c; text-align: justify; line-height: 1.5; }
 
-        /* SOLUCIÓN DEFINITIVA MÓVILES */
+        /* SOLUCIÓN MÓVIL: Centrado respecto a la pantalla/sección */
         @media (max-width: 600px) { 
             .grid, .mnemonic-container { grid-template-columns: 1fr; } 
             .limited-width { max-width: 100%; } 
             .amdg { position: static; text-align: right; margin-top: 10px; } 
             
-            /* Hacemos que el campo ignore su posición relativa para que el tooltip se centre en la SECCIÓN */
+            /* Hacemos que el campo ignore su posición relativa para que el tooltip se centre en la .section entera */
             .field { position: static; }
             
             .tooltiptext {
                 width: 280px !important;
                 max-width: 85vw !important;
-                left: 50% !important; /* Centrado respecto a .section */
+                left: 50% !important; /* Ahora se centra respecto al ancho de .section */
                 transform: translateX(-50%) !important;
                 right: auto !important;
                 bottom: auto !important;
-                margin-top: -10px; /* Ajuste para que no tape el icono */
+                margin-top: -10px; /* Evita que tape el icono al aparecer */
             }
         }
     </style>
@@ -93,26 +91,26 @@
 
     <div class="section">
         <div class="section-title">Patient Profile</div>
-        <div class="field"><label>Age (years) <span class="info-icon" tabindex="0" onclick="">i<span class="tooltiptext">Chronological age at the time of surgery.</span></span></label>
+        <div class="field"><label>Age (years) <span class="info-icon" tabindex="0">i<span class="tooltiptext">Chronological age at the time of surgery.</span></span></label>
         <input type="number" id="age" class="limited-width" placeholder="Enter age" oninput="calc()"></div>
-        <div class="field"><label>Hemoglobin (g/dL) <span class="info-icon" tabindex="0" onclick="">i<span class="tooltiptext">Last available preoperative hemoglobin concentration.</span></span></label>
+        <div class="field"><label>Hemoglobin (g/dL) <span class="info-icon" tabindex="0">i<span class="tooltiptext">Last available preoperative hemoglobin concentration.</span></span></label>
         <input type="text" id="hb" inputmode="decimal" class="limited-width" placeholder="Enter Hb" oninput="calc()"></div>
-        <div class="field"><label>Renal Function (eGFR) <span class="info-icon" tabindex="0" onclick="">i<span class="tooltiptext">Estimated GFR (CKD-EPI formula).</span></span></label>
+        <div class="field"><label>Renal Function (eGFR) <span class="info-icon" tabindex="0">i<span class="tooltiptext">Estimated GFR (CKD-EPI formula).</span></span></label>
         <div class="toggle-group limited-width"><input type="radio" name="gfr" id="gfr0" value="0" checked onchange="calc()"><label for="gfr0">&ge; 40 mL/min</label><input type="radio" name="gfr" id="gfr1" value="1.191" onchange="calc()"><label for="gfr1">&lt; 40 mL/min</label></div></div>
     </div>
 
     <div class="section">
         <div class="section-title">Cardiac Status</div>
         <div class="grid">
-            <div class="field"><label>LVEF <span class="info-icon" tabindex="0" onclick="">i<span class="tooltiptext">Left Ventricular Ejection Fraction. Preserved: &ge;50%, Moderate: 30-49%, Severe: &lt;30%.</span></span></label>
+            <div class="field"><label>LVEF <span class="info-icon" tabindex="0">i<span class="tooltiptext">Left Ventricular Ejection Fraction. Preserved: &ge;50%, Moderate: 30-49%, Severe: &lt;30%.</span></span></label>
             <select id="ef" onchange="calc()"><option value="0">Preserved (&ge; 50%)</option><option value="0.331">Moderate (30-49%)</option><option value="0.514">Severe (&lt; 30%)</option></select></div>
-            <div class="field"><label>Pulmonary hypertension (PASP) <span class="info-icon" tabindex="0" onclick="">i<span class="tooltiptext">Mod: 31-55 mmHg, Severe: &gt; 55 mmHg.</span></span></label>
+            <div class="field"><label>Pulmonary hypertension (PASP) <span class="info-icon" tabindex="0">i<span class="tooltiptext">Mod: 31-55 mmHg, Severe: &gt; 55 mmHg.</span></span></label>
             <select id="ph" onchange="calc()"><option value="0">Normal (&le; 30 mmHg)</option><option value="0.538">Moderate (31-55 mmHg)</option><option value="1.212">Severe (&gt; 55 mmHg)</option></select></div>
-            <div class="field"><label>Atrial fibrillation / flutter <span class="info-icon" tabindex="0" onclick="">i<span class="tooltiptext">Preoperative history of atrial fibrillation or flutter.</span></span></label>
+            <div class="field"><label>Atrial fibrillation / flutter <span class="info-icon" tabindex="0">i<span class="tooltiptext">Preoperative history of atrial fibrillation or flutter.</span></span></label>
             <div class="toggle-group"><input type="radio" name="af" id="af0" value="0" checked onchange="calc()"><label for="af0">No</label><input type="radio" name="af" id="af1" value="0.732" onchange="calc()"><label for="af1">Yes</label></div></div>
-            <div class="field"><label>Recent myocardial infarction (< 90 days) <span class="info-icon" tabindex="0" onclick="">i<span class="tooltiptext">Myocardial infarction within 90 days prior to the procedure.</span></span></label>
+            <div class="field"><label>Recent myocardial infarction (< 90 days) <span class="info-icon" tabindex="0">i<span class="tooltiptext">Myocardial infarction within 90 days prior to the procedure.</span></span></label>
             <div class="toggle-group"><input type="radio" name="mi" id="mi0" value="0" checked onchange="calc()"><label for="mi0">No</label><input type="radio" name="mi" id="mi1" value="0.642" onchange="calc()"><label for="mi1">Yes</label></div></div>
-            <div class="field"><label>IABP or other circulatory support <span class="info-icon" tabindex="0" onclick="">i<span class="tooltiptext">Intra-aortic balloon pump or other preoperative circulatory support.</span></span></label>
+            <div class="field"><label>IABP or other circulatory support <span class="info-icon" tabindex="0">i<span class="tooltiptext">Intra-aortic balloon pump or other preoperative circulatory support.</span></span></label>
             <div class="toggle-group"><input type="radio" name="iabp" id="iabp0" value="0" checked onchange="calc()"><label for="iabp0">No</label><input type="radio" name="iabp" id="iabp1" value="0.476" onchange="calc()"><label for="iabp1">Yes</label></div></div>
         </div>
     </div>
@@ -120,11 +118,11 @@
     <div class="section">
         <div class="section-title">Surgical Profile</div>
         <div class="grid">
-            <div class="field"><label>Surgical Priority <span class="info-icon" tabindex="0" onclick="">i<span class="tooltiptext">Urgent vs. Elective surgery status.</span></span></label>
+            <div class="field"><label>Surgical Priority <span class="info-icon" tabindex="0">i<span class="tooltiptext">Urgent vs. Elective surgery status.</span></span></label>
             <div class="toggle-group"><input type="radio" name="urgent" id="urg0" value="0" checked onchange="calc()"><label for="urg0">Elective</label><input type="radio" name="urgent" id="urg1" value="0.620" onchange="calc()"><label for="urg1">Urgent</label></div></div>
-            <div class="field"><label>Combined Surgery <span class="info-icon" tabindex="0" onclick="">i<span class="tooltiptext">CABG combined with valve procedures.</span></span></label>
+            <div class="field"><label>Combined Surgery <span class="info-icon" tabindex="0">i<span class="tooltiptext">CABG combined with valve procedures.</span></span></label>
             <div class="toggle-group"><input type="radio" name="comb" id="comb0" value="0" checked onchange="calc()"><label for="comb0">No</label><input type="radio" name="comb" id="comb1" value="0.315" onchange="calc()"><label for="comb1">Yes</label></div></div>
-            <div class="field"><label>Reoperation <span class="info-icon" tabindex="0" onclick="">i<span class="tooltiptext">Previous cardiac surgery involving pericardial opening.</span></span></label>
+            <div class="field"><label>Reoperation <span class="info-icon" tabindex="0">i<span class="tooltiptext">Previous cardiac surgery involving pericardial opening.</span></span></label>
             <div class="toggle-group"><input type="radio" name="reop" id="reop0" value="0" checked onchange="calc()"><label for="reop0">No</label><input type="radio" name="reop" id="reop1" value="0.979" onchange="calc()"><label for="reop1">Yes</label></div></div>
         </div>
     </div>
@@ -158,11 +156,12 @@
 
         <div class="author-box">
             <strong>Corresponding author and developer:</strong> Ignacio Vasserot, MD<sup>1</sup><br>
-            <strong>Senior investigators:</strong> Manuel Mart&iacute;nez-Sell&eacute;s, MD, PhD<sup>2</sup>; Jos&eacute; Mar&iacute;a Barrio, MD, PhD<sup>1</sup>; Gregorio Cuerpo, MD, PhD<sup>3</sup>; Javier Bermejo, MD, PhD<sup>2</sup>; Ignacio Garutti, MD, PhD<sup>1</sup>; Javier Hortal, MD, PhD<sup>1</sup>.
+            <strong>Senior investigators:</strong> Manuel Mart&iacute;nez-Sell&eacute;s, MD, PhD<sup>2</sup>; Jos&eacute; Mar&iacute;a Barrio, MD, PhD<sup>1</sup>; Gregorio Cuerpo, MD, PhD<sup>3</sup>; Javier Bermejo, MD, PhD<sup>4</sup>; Ignacio Garutti, MD, PhD<sup>1</sup>; Javier Hortal, MD, PhD<sup>1</sup>.
             <div class="affiliation">
-                <sup>1</sup> Department of Anesthesiology, Hospital General Universitario Gregorio Mara&ntilde;&oacute;n, Madrid, Spain.<br>
-                <sup>2</sup> Department of Cardiology, Hospital General Universitario Gregorio Mara&ntilde;&oacute;n, Madrid, Spain.<br>
-                <sup>3</sup> Department of Cardiac Surgery, Hospital General Universitario Gregorio Mara&ntilde;&oacute;n, Madrid, Spain.<br><br>
+                <sup>1</sup> Anesthesiology Department, Hospital General Universitario Gregorio Mara&ntilde;&oacute;n, Instituto de Investigaci&oacute;n Sanitaria Gregorio Mara&ntilde;&oacute;n. Madrid, Spain.<br>
+                <sup>2</sup> Cardiology Department, Hospital General Universitario Gregorio Mara&ntilde;&oacute;n, Instituto de Investigaci&oacute;n Sanitaria Gregorio Mara&ntilde;&oacute;n, CIBERCV. School of Biomedical Sciences and Health, Universidad Europea. School of Medicine, Universidad Complutense. Madrid, Spain.<br>
+                <sup>3</sup> Cardiac Surgery Department, Hospital General Universitario Gregorio Mara&ntilde;&oacute;n, Instituto de Investigaci&oacute;n Sanitaria Gregorio Mara&ntilde;&oacute;n. Madrid, Spain.<br>
+                <sup>4</sup> Cardiology Department, Hospital General Universitario Gregorio Mara&ntilde;&oacute;n, Instituto de Investigaci&oacute;n Sanitaria Gregorio Mara&ntilde;&oacute;n, CIBERCV. School of Medicine, Universidad Complutense. Madrid, Spain.<br><br>
                 <strong>Reference:</strong> <em>Manuscript in press.</em>
             </div>
             <div class="amdg">A.M.D.G.</div>
@@ -240,4 +239,5 @@
 </script>
 
 </body>
-</html>
+</html> 
+
