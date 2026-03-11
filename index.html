@@ -14,7 +14,6 @@
         .header h1 { margin: 0; font-size: 30px; font-weight: 700; letter-spacing: 1px; }
         .header .subtitle { margin: 12px 0 0; opacity: 0.9; font-size: 15px; font-weight: 400; font-style: italic; line-height: 1.4; }
 
-        /* Contenedor de sección: referencia de tope para móvil */
         .section { padding: 25px 30px; border-bottom: 1px solid #edf2f7; position: relative; } 
         .section-title { font-size: 13px; font-weight: 800; color: #a0aec0; text-transform: uppercase; margin-bottom: 22px; letter-spacing: 0.8px; display: flex; align-items: center; }
         .section-title::after { content: ""; flex: 1; height: 1px; background: #edf2f7; margin-left: 15px; }
@@ -24,10 +23,13 @@
         label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; color: #4a5568; }
         
         .info-icon { display: inline-block; width: 18px; height: 18px; background: #cbd5e0; color: white; border-radius: 50%; text-align: center; font-size: 12px; line-height: 18px; cursor: help; margin-left: 5px; vertical-align: middle; position: relative; outline: none; }
-        .tooltiptext { visibility: hidden; width: 220px; background-color: #2d3748; color: #fff; text-align: center; border-radius: 6px; padding: 12px; position: absolute; z-index: 999; bottom: 135%; left: 50%; transform: translateX(-50%); opacity: 0; transition: opacity 0.3s; font-size: 12px; font-weight: normal; line-height: 1.4; pointer-events: none; text-transform: none; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        
+        /* Tooltip Base */
+        .tooltiptext { visibility: hidden; width: 220px; background-color: #2d3748 !important; color: #ffffff !important; text-align: center; border-radius: 6px; padding: 12px; position: absolute; z-index: 999; bottom: 135%; left: 50%; transform: translateX(-50%); opacity: 0; transition: opacity 0.3s; font-size: 12px; font-weight: normal; line-height: 1.4; pointer-events: none; text-transform: none; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
         
         .info-icon:hover .tooltiptext, .info-icon:focus .tooltiptext, .info-icon:active .tooltiptext { visibility: visible; opacity: 1; }
         
+        /* Escritorio: Alternancia de lados */
         .grid .field:nth-child(even) .info-icon .tooltiptext { left: auto; right: 0; transform: none; }
         .grid .field:nth-child(odd) .info-icon .tooltiptext { left: 0; transform: none; }
 
@@ -59,21 +61,22 @@
         
         .disclaimer-box { margin-top: 30px; padding: 15px; background: #fdf2f2; border: 1px solid #fecaca; border-radius: 8px; font-size: 11px; color: #9b2c2c; text-align: justify; line-height: 1.5; }
 
-        /* SOLUCIÓN RADICAL MÓVIL: El marco blanco es el límite real */
+        /* AJUSTE MAESTRO PARA IPHONE / MÓVIL */
         @media (max-width: 600px) { 
             .grid, .mnemonic-container { grid-template-columns: 1fr; } 
             .limited-width { max-width: 100%; } 
             .amdg { position: static; text-align: right; margin-top: 10px; } 
             
-            /* Anulamos el posicionamiento relativo del campo para que el cartel se base en la SECCIÓN entera */
-            .field { position: static; }
-            
+            /* El recuadro informativo se ancla a la derecha y crece hacia la izquierda (dentro del marco) */
             .tooltiptext {
-                width: auto !important;
-                left: 15px !important;  /* Margen fijo respecto al borde izquierdo del marco blanco */
-                right: 15px !important; /* Margen fijo respecto al borde derecho del marco blanco */
-                transform: none !important; /* Eliminamos el centrado simétrico que causa desborde */
-                bottom: 120% !important; /* Aparece justo encima del label */
+                width: 250px !important; /* Ancho fijo para mantener estructura */
+                left: auto !important;
+                right: 0 !important; /* Alineado al borde derecho del campo de texto/label */
+                transform: none !important;
+                bottom: 125% !important;
+                background-color: #2d3748 !important; /* Gris oscuro forzado */
+                color: #ffffff !important; /* Letras blancas forzadas */
+                opacity: 1;
             }
         }
     </style>
@@ -157,7 +160,7 @@
             <div class="affiliation">
                 <sup>1</sup> Anesthesiology Department, Hospital General Universitario Gregorio Mara&ntilde;&oacute;n, Instituto de Investigaci&oacute;n Sanitaria Gregorio Mara&ntilde;&oacute;n. Madrid, Spain.<br>
                 <sup>2</sup> Cardiology Department, Hospital General Universitario Gregorio Mara&ntilde;&oacute;n, Instituto de Investigaci&oacute;n Sanitaria Gregorio Mara&ntilde;&oacute;n, CIBERCV, Instituto de Salud Carlos III. School of Biomedical Sciences and Health, Universidad Europea. School of Medicine, Universidad Complutense. Madrid, Spain.<br>
-                <sup>3</sup> Cardiac Surgery Department, Hospital General Universitario Gregorio Mara&ntilde;&oacute;n, Instituto de Investigaci&oacute;n Sanitaria Gregorio Mara&ntilde;&oacute;n. Madrid, Spain.<br>
+                <sup>3</sup> Cardic Surgery Department, Hospital General Universitario Gregorio Mara&ntilde;&oacute;n, Instituto de Investigaci&oacute;n Sanitaria Gregorio Mara&ntilde;&oacute;n. Madrid, Spain.<br>
                 <sup>4</sup> Cardiology Department, Hospital General Universitario Gregorio Mara&ntilde;&oacute;n, Instituto de Investigaci&oacute;n Sanitaria Gregorio Mara&ntilde;&oacute;n, CIBERCV. School of Medicine, Universidad Complutense. Madrid, Spain.<br><br>
                 <strong>Reference:</strong> <em>Manuscript in press.</em>
             </div>
@@ -236,4 +239,4 @@
 </script>
 
 </body>
-</html> 
+</html>
