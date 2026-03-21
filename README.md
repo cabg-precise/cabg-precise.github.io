@@ -5,7 +5,7 @@
 
 ### Clinical Calculator
 The interactive web-based tool is available here:
-**[https://cabg-precise.github.io](https://cabg-precise.github.io)**
+**[https://cabg-precise.com](https://cabg-precise.com)**
 
 ### Performance & Clinical Utility
 The model demonstrates high precision and significant improvement over traditional scoring systems:
